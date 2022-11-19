@@ -13,17 +13,11 @@ router.get('/', (req, res) => {
 router.get('/results', (req, res) => {
     res.json({ data: DDBB })
 })
-router.get(`/first_result/:id_result`, (req, res) => {
+router.get(`/first_result/:key/:key_value`, (req, res) => {
     const { results } = DDBB
-    const data = results.filter(result => result.id == req.params.id_result)
+    console.log(req.params)
+    const data = results.filter(result => result[req.params.key] == req.params.key_value)
     res.json({ data })
 })
 
 module.exports = router;
-
-console.log('test')
-console.log('test2')
-console.log('test3')
-console.log('test4')
-
-
