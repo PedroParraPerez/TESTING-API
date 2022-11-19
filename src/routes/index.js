@@ -20,3 +20,5 @@ router.get(`/first_result/:id_result`, (req, res) => {
 })
 
 module.exports = router;
+
+console.log('test')
