@@ -8,16 +8,15 @@ const DDBB = require('../../dataBase.json')
 // ROUTES
 
 router.get('/', (req, res) => {
-    res.json(({title: 'TESTING API'}))
+    res.json(({ title: 'TESTING API' }))
 })
-router.get('/notifications', (req, res) => {
-    res.json( {data: DDBB})
+router.get('/results', (req, res) => {
+    res.json({ data: DDBB })
 })
-router.post('/notifications', (req, res) => {
-    const { dale } = req.body
-    console.log(dale)
-    console.log(req.body)
-    res.send('recibido')
+router.get(`/first_result/:id_result`, (req, res) => {
+    const { results } = DDBB
+    const data = results.filter(result => result.id == req.params.id_result)
+    res.json({ data })
 })
 
 module.exports = router;
